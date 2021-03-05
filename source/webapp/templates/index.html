@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+% block content %}
+{#    <a href="{% url "article-add" %}">Создать статус</a>#}
+    {% include 'menu_element.html' with url_name='article-add' title='создать статус' %}
+    <h1>Продукты</h1>
+    {% if not products %}
+        <h2>Нет продуктов</h2>
+    {% endif %}
+    {% for product in products %}
+            <p>{{ product.category }}: <a href="{% url "article-view" product.id%}">{{ product.title }}</a></p>
+        {% endfor %}
+    {% endblock content %}
