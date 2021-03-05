@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends "base.html" %}
+{%  block content %}
+{#    <a href="{% url "article-list" %}">view article list</a><br>#}
+{#    <a href="{% url 'article-update'  article.id %}"> update</a><br>#}
+{#    <a href="{% url 'article-delete'  article.id %}"> delete </a>#}
+    <br>
+    <br>
+    <h1>Product {{ product.id }}</h1>
+    <p>Description: {{ product.title }}</p>
+    <p>Detail_description {{ product.description }}</p>
+    <p>category: {{ product.category }}</p>
+    <p>Price.reminder: {{ product.reminder }}</p>
+    <p>Price: {{ product.price }}</p>
+{% endblock content %}

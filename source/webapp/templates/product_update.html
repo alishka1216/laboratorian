@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>change</title>
 </head>
-<body>
-
+<body><div style="background-color: lightskyblue; text-align: center">
+<h1>Продукт!</h1>
+<form action="/product/add/" method="post">
+    {% include "product_form.html" with button_text='change' %}
+</form>
+</div>
 </body>
 </html>
