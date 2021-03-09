@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{#    <a href="{% url "article-add" %}">Создать статус</a>#}
     <h1>Продукты</h1>
     {% if not products %}
         <h2>Нет продуктов</h2>
@@ -9,4 +8,4 @@
     {% for product in products %}
             <p>{{ product.category }}: <a href="{% url "product-view" product.id%}">{{ product.title }}</a></p>
         {% endfor %}
-    {% endblock content %}
+{% endblock content %}

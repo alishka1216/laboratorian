@@ -14,7 +14,7 @@ def index_view(request):
 
 
 def product_view(request, pk):
-    product = get_object_or_404(Article, id=pk)
+    product = get_object_or_404(Product, id=pk)
     return render(request, 'product_view.html', context={'product': product})
 
 
@@ -32,7 +32,7 @@ def product_create_view(request):
                 reminder=form.cleaned_data.get('reminder'),
                 price=form.cleaned_data.get('price')
             )
-            product.save()
+
 
         else:
             return render(request, 'product_create.html', context={'form': form})
@@ -66,7 +66,7 @@ def product_update_view(request, pk):
 
 
 def product_delete_view(request, pk):
-    product = get_object_or_404(Article, id=pk)
+    product = get_object_or_404(Product, id=pk)
     if request.method == 'GET':
         return render(request, 'product_delete.html', context={'product': product})
     elif request.method == 'POST':

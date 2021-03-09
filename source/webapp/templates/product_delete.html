@@ -3,7 +3,7 @@
     <h2>Вы уверены, что хотите удалить продукт? {{ product.title }}</h2>
     <form action="{% url 'product-delete' product.id %}", method="POST">
         {% csrf_token %}
-        <input type="submit" value="Да">
+        <input class="btn btn-primary" type="submit" value="да">
     </form>
-    <a href="{% url "product-view" product.id %}"> Отмена</a>
+    <a href="{% url "product-view" product.id %}"> <input class="btn btn-primary mt-2" type="submit" value="отмена"></a>
 {% endblock content %}

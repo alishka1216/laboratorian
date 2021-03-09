@@ -1,15 +1,21 @@
 
 {% extends "base.html" %}
+{% block  nav%}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'product-update' product.id %}">Изменить</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'product-delete' product.id %}">удалить</a>
+      </li>
+{% endblock %}
 {%  block content %}
-{#    <a href="{% url "article-list" %}">view article list</a><br>#}
-{#    <a href="{% url 'article-update'  article.id %}"> update</a><br>#}
-{#    <a href="{% url 'article-delete'  article.id %}"> delete </a>#}
-    <br>
-    <br>
-    <h1>Product {{ product.id }}</h1>
-    <p>Description: {{ product.title }}</p>
-    <p>Detail_description {{ product.description }}</p>
-    <p>category: {{ product.category }}</p>
-    <p>Price.reminder: {{ product.reminder }}</p>
-    <p>Price: {{ product.price }}</p>
+
+
+
+    <h1>Товар № {{ product.id }}</h1>
+    <p>Название: {{ product.title }}</p>
+    <p>Описание: {{ product.description }}</p>
+    <p>Категория: {{ product.category }}</p>
+    <p>Остаток: {{ product.reminder }}</p>
+    <p>Цена: {{ product.price }} $</p>
 {% endblock content %}

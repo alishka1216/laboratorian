@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-</head>
-<body><div style="background-color: lightskyblue; text-align: center">
-<h1>Products!</h1>
-<form action="/product/add/" method="post">
+{% extends 'base.html' %}
+{% block content %}
+<form action="{% url 'product-add' %}" method="post">
     {% include "product_form.html" with button_text='Send' %}
 </form>
-</div>
-</body>
-</html>
+{% endblock  %}
