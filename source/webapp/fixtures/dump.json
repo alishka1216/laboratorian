@@ -1,0 +1,54 @@
+[
+{
+  "model": "webapp.category",
+  "pk": 1,
+  "fields": {
+    "name": "задача"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 2,
+  "fields": {
+    "name": "ошибка"
+  }
+},
+{
+  "model": "webapp.category",
+  "pk": 3,
+  "fields": {
+    "name": "выполнено"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "created_ad": "2021-04-02T11:24:45.881Z",
+    "update_ad": "2021-04-02T11:24:45.881Z",
+    "title": "fsdfa",
+    "description": "dsadas",
+    "category": 1,
+    "reminder": 12,
+    "price": "122.00"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$DfohnbeSLbYk$YPKgd66ldeGdVXqZ1oolDbYuC6FtViabn8/OsqDxIC0=",
+    "last_login": "2021-04-02T11:23:35.264Z",
+    "is_superuser": true,
+    "username": "alishka1216",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-04-02T11:23:25.802Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
