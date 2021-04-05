@@ -1,0 +1,18 @@
+
+{% extends "basket/basket_base.html" %}
+<li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url "product-list" %}" >Список товаров</a>
+      </li>
+{% block content %}
+    <h1>Продукты в корзине</h1>
+    {% if not baskets %}
+        <h2>Нет продуктов в корзине</h2>
+    {% endif %}
+    {% for basket in baskets %}
+        <div class="border border-primary">
+            <p>{{ basket }}</p>
+            <p>{{ basket.total }}</p>
+            <p><a href="{% url "basket-delete" basket.pk %}">delete</a></p>
+        </div>
+        {% endfor %}
+{% endblock content %}
