@@ -22,15 +22,79 @@
 },
 {
   "model": "webapp.product",
+  "pk": 5,
+  "fields": {
+    "created_ad": "2021-04-02T13:36:44.793Z",
+    "update_ad": "2021-04-05T09:49:52.019Z",
+    "title": "ewewrew`q",
+    "description": "sfdsf",
+    "category": 1,
+    "reminder": 23232,
+    "price": "3213.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 6,
+  "fields": {
+    "created_ad": "2021-04-02T15:00:23.607Z",
+    "update_ad": "2021-04-02T15:00:23.607Z",
+    "title": "sadas",
+    "description": "dsadas",
+    "category": 2,
+    "reminder": 0,
+    "price": "22.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 7,
+  "fields": {
+    "created_ad": "2021-04-05T10:35:15.610Z",
+    "update_ad": "2021-04-05T10:42:47.475Z",
+    "title": "ali",
+    "description": "ali",
+    "category": 1,
+    "reminder": 16,
+    "price": "2141.00"
+  }
+},
+{
+  "model": "webapp.product_order",
   "pk": 1,
   "fields": {
-    "created_ad": "2021-04-02T11:24:45.881Z",
-    "update_ad": "2021-04-02T11:24:45.881Z",
-    "title": "fsdfa",
-    "description": "dsadas",
-    "category": 1,
-    "reminder": 12,
-    "price": "122.00"
+    "product": 5,
+    "order": 1,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 2,
+  "fields": {
+    "product": 6,
+    "order": 1,
+    "total": 2
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 3,
+  "fields": {
+    "product": 7,
+    "order": 1,
+    "total": 6
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 1,
+  "fields": {
+    "created_ad": "2021-04-05T12:28:49.480Z",
+    "update_ad": "2021-04-05T12:28:49.481Z",
+    "name": "задача",
+    "number": "321",
+    "adress": "asdsad"
   }
 },
 {
@@ -38,7 +102,7 @@
   "pk": 1,
   "fields": {
     "password": "pbkdf2_sha256$216000$DfohnbeSLbYk$YPKgd66ldeGdVXqZ1oolDbYuC6FtViabn8/OsqDxIC0=",
-    "last_login": "2021-04-02T11:23:35.264Z",
+    "last_login": "2021-04-05T10:25:29.988Z",
     "is_superuser": true,
     "username": "alishka1216",
     "first_name": "",
