@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-# Create your models here.
-category_choices = [('technical', 'техника'), ('product', 'продукты'), ('things', 'вещи')]
 
 
 class BaseModel(models.Model):
@@ -27,9 +25,22 @@ class Product(BaseModel):
     reminder = models.IntegerField(validators=[MinValueValidator(0)], name='reminder')
     price = models.DecimalField(decimal_places=2, max_digits=7, name='price')
 
+
     class Meta:
         db_table = 'products'
         verbose_name = 'Продукты'
         verbose_name_plural = 'Продукт'
 
 
+class Basket(BaseModel):
+    product = models.ForeignKey(Product, null=True, related_name="basket",
+                                on_delete=models.CASCADE)
+
+    total = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='total')
+
+
+class Order(BaseModel):
+    product_order = models.ManyToManyField(max_length=100, null=False, blank=False, name='product_order')
+    name = models.CharField(max_length=100, null=False, blank=False, name='name')
+    number = models.IntegerField(validators=[MinValueValidator(0)], name='number')
+    adress = models.CharField(max_length=100, null=False, blank=False, name='adress')

@@ -7,5 +7,6 @@
     {% endif %}
     {% for product in products %}
             <p>{{ product.category }}: <a href="{% url "product-view" product.id%}">{{ product.title }}</a></p>
+        <a href="{% url 'basket-send' product.pk %}">add</a>
         {% endfor %}
 {% endblock content %}
