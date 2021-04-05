@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from webapp.models import Product, Basket
+from webapp.models import Product, Basket, Order, Product_order
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View, TemplateView, RedirectView, FormView
 from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.urls import reverse, reverse_lazy
-from webapp.forms import ProductFrom, SearchForm
+from webapp.forms import ProductFrom, SearchForm, OrderForm
 from django.db.models import Q
 from django.utils.http import urlencode
 
@@ -91,6 +91,11 @@ class BasketListView(ListView):
     paginate_by = 10
     paginate_orphans = 3
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=None, **kwargs)
+        context['form'] = OrderForm()
+        return context
+
 
 class BasketView(View):
     def get(self, request, *args, **kwargs):
@@ -109,7 +114,6 @@ class BasketView(View):
         return redirect('product-list')
 
 
-
 class BasketDeleteBack(DeleteView):
     template_name = 'basket/basket_delete.html'
     model = Basket
@@ -123,3 +127,15 @@ class BasketDeleteBack(DeleteView):
         product.save()
         return super(BasketDeleteBack, self).post(request, *args, *kwargs)
 
+
+class OrderCreateView(CreateView):
+    template_name = 'basket/basket_list.html'
+    model = Order
+    form_class = OrderForm
+
+    def form_valid(self, form):
+        order = form.save()
+        for i in Basket.objects.all():
+            Product_order.objects.create(product=i.product, order=order, total=i.total)
+            i.delete()
+        return redirect('product-list')

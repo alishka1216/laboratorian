@@ -10,9 +10,12 @@
     {% endif %}
     {% for basket in baskets %}
         <div class="border border-primary">
-            <p>{{ basket }}</p>
-            <p>{{ basket.total }}</p>
+            <p>{{ basket.product.title}}</p>
+            <p>кол-во: {{ basket.total }}</p>
             <p><a href="{% url "basket-delete" basket.pk %}">delete</a></p>
         </div>
         {% endfor %}
+     <form action="{% url 'order-add' %}" method="post">
+            {% include "basket/order_form.html" with button_text='Send' %}
+        </form>
 {% endblock content %}
