@@ -3,7 +3,6 @@ from django.core.validators import MinValueValidator, ValidationError
 from webapp.models import Product, Order
 
 
-
 class ProductFrom(forms.ModelForm):
     class Meta:
         model = Product

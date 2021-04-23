@@ -1,3 +1,6 @@
+from django.conf.urls.static import static
+from django.urls import path, include
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from webapp.views import (
@@ -22,5 +25,6 @@ urlpatterns = [
     path('product/basket/', BasketListView.as_view(), name='basket-view'),
     path('product/send/<int:pk>/', BasketView.as_view(), name='basket-send'),
     path('product/basket/delete/<int:pk>/', BasketDeleteBack.as_view(), name='basket-delete'),
-    path('order/', OrderCreateView.as_view(), name='order-add')
-]
+    path('order/', OrderCreateView.as_view(), name='order-add'),
+    path('accounts/', include('accounts.urls')),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

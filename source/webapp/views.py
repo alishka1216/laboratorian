@@ -129,6 +129,10 @@ class BasketDeleteBack(DeleteView):
 
 
 class OrderCreateView(CreateView):
+    template_name = 'basket/basket_list.html'
+    model = Order
+    form_class = OrderForm
+
     def form_valid(self, form):
         order = form.save()
         for i in Basket.objects.all():
