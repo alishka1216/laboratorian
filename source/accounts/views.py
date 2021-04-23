@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
+
 def register_view(request, *args, **kwargs):
     context = {}
     form = UserRegisterForm()
@@ -19,4 +20,5 @@ def register_view(request, *args, **kwargs):
             login(request, user)
             form.save()
             return redirect('product-list')
-        context['form'] = form
+    context['form'] = form
+    return render(request, 'registration/register.html', context=context)

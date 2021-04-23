@@ -14,10 +14,20 @@
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url "basket-view" %}" >Список товаров в корзине</a>
       </li>
+    {% if perms.webapp.add_product %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'product-add' %}">Добавить товар</a>
       </li>
+    {% endif %}
       {% block  nav%}{% endblock %}
+        {% if user.is_authenticated %}
+          <li class="menu-right"><a href="{% url 'accounts:logout' %}?next={{ request.get_full_path }}" class="nav-link">Выход</a></li>
+           <a style="color: brown" class="nav-link ">{{ user.username }} online</a>
+          {% block menu_links %}{% endblock %}
+       {% else %}
+           <li class="menu-right"><a href="{% url 'accounts:login' %}?next={{ request.get_full_path }}" class="nav-link">Вход</a></li>
+            <a class="nav-link" style="color: brown">anonymous online</a>
+      {% endif %}
     </ul>
 </nav>
  {% block content %}{% endblock content %}

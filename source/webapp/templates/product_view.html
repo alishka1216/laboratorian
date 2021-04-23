@@ -1,12 +1,16 @@
 
 {% extends "base.html" %}
 {% block  nav%}
+    {% if perms.webapp.change_product %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'product-update' product.id %}">Изменить</a>
       </li>
+    {% endif %}
+    {% if perms.webapp.delete_product %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'product-delete' product.id %}">удалить</a>
       </li>
+    {% endif %}
 {% endblock %}
 {%  block content %}
 

@@ -6,6 +6,7 @@ from django.urls import reverse, reverse_lazy
 from webapp.forms import ProductFrom, SearchForm, OrderForm
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 def get(self, request, *args, **kwargs):
@@ -58,30 +59,33 @@ class ProductView(DetailView):
     context_object_name = 'product'
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'product_create.html'
     model = Product
     form_class = ProductFrom
+    permission_required = 'webapp.add_product'
 
     def get_success_url(self):
         return reverse('product-view', kwargs={'pk': self.object.pk})
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(PermissionRequiredMixin,UpdateView):
     model = Product
     template_name = 'product_update.html'
     form_class = ProductFrom
     context_object_name = 'product'
+    permission_required = 'webapp.change_product'
 
     def get_success_url(self):
         return reverse('product-view', kwargs={'pk': self.object.pk})
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'product_delete.html'
     model = Product
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
+    permission_required = 'webapp.delete_product'
 
 
 class BasketListView(ListView):
@@ -91,6 +95,11 @@ class BasketListView(ListView):
     paginate_by = 10
     paginate_orphans = 3
 
+    def get_queryset(self):
+        cart = self.request.session.get('cart', [])
+        print(cart)
+        return Basket.objects.filter(pk__in=cart)
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=None, **kwargs)
         context['form'] = OrderForm()
@@ -99,14 +108,20 @@ class BasketListView(ListView):
 
 class BasketView(View):
     def get(self, request, *args, **kwargs):
+        session = request.session.get('cart', [])
+        print(session)
         product = get_object_or_404(Product, pk=self.kwargs.get('pk'))
         if product.reminder > 0:
             try:
-                basket = Basket.objects.get(product__pk=product.pk)
+                basket = Basket.objects.get(product__pk=product.pk, pk__in=session)
                 basket.total += 1
                 basket.save()
             except Basket.DoesNotExist:
-                Basket.objects.create(product=product, total=1)
+                b = Basket.objects.create(product=product, total=1)
+                print(b)
+                session.append(b.pk)
+            request.session['cart'] = session
+            print(request.session['cart'])
             product.reminder -= 1
             product.save()
         else:
@@ -119,6 +134,7 @@ class BasketDeleteBack(DeleteView):
     model = Basket
     context_object_name = 'basket'
     success_url = reverse_lazy('product-list')
+    permission_required = 'webapp.delete_basket'
 
     def post(self, request, *args, **kwargs):
         basket = self.get_object()
@@ -132,6 +148,7 @@ class OrderCreateView(CreateView):
     template_name = 'basket/basket_list.html'
     model = Order
     form_class = OrderForm
+    permission_required = 'webapp.add_order'
 
     def form_valid(self, form):
         order = form.save()
