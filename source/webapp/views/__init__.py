@@ -5,7 +5,8 @@ from webapp.views.basket import (
 )
 
 from webapp.views.order import (
-    OrderCreateView
+    OrderCreateView,
+    OrderListView
 )
 from webapp.views.product import (
     IndexView,

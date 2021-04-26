@@ -11,12 +11,17 @@
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="{% url "product-list" %}" >Список товаров</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="{% url "basket-view" %}" >Список товаров в корзине</a>
-      </li>
-    {% if perms.webapp.add_product %}
+     {% if perms.webapp.add_product %}
       <li class="nav-item">
         <a class="nav-link" href="{% url 'product-add' %}">Добавить товар</a>
+      </li>
+    {% endif %}
+      <li class="nav-item">
+        <a class="nav-link"  href="{% url "basket-view" %}" >Список товаров в корзине</a>
+      </li>
+    {% if user.is_authenticated %}
+        <li class="nav-item">
+        <a class="nav-link" href="{% url "order-list" %}" >История заказов</a>
       </li>
     {% endif %}
       {% block  nav%}{% endblock %}

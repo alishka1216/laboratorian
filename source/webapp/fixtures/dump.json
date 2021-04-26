@@ -25,25 +25,12 @@
   "pk": 5,
   "fields": {
     "created_ad": "2021-04-02T13:36:44.793Z",
-    "update_ad": "2021-04-05T09:49:52.019Z",
+    "update_ad": "2021-04-26T11:22:28.647Z",
     "title": "ewewrew`q",
     "description": "sfdsf",
     "category": 1,
-    "reminder": 23232,
+    "reminder": 23230,
     "price": "3213.00"
-  }
-},
-{
-  "model": "webapp.product",
-  "pk": 6,
-  "fields": {
-    "created_ad": "2021-04-02T15:00:23.607Z",
-    "update_ad": "2021-04-02T15:00:23.607Z",
-    "title": "sadas",
-    "description": "dsadas",
-    "category": 2,
-    "reminder": 0,
-    "price": "22.00"
   }
 },
 {
@@ -51,12 +38,68 @@
   "pk": 7,
   "fields": {
     "created_ad": "2021-04-05T10:35:15.610Z",
-    "update_ad": "2021-04-05T10:42:47.475Z",
+    "update_ad": "2021-04-26T11:58:53.309Z",
     "title": "ali",
     "description": "ali",
     "category": 1,
-    "reminder": 16,
+    "reminder": 14,
     "price": "2141.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 8,
+  "fields": {
+    "created_ad": "2021-04-26T11:22:03.926Z",
+    "update_ad": "2021-04-26T11:58:54.188Z",
+    "title": "выфвфыв",
+    "description": "вфывфы",
+    "category": 2,
+    "reminder": 213210,
+    "price": "21.00"
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 9,
+  "fields": {
+    "created_ad": "2021-04-26T11:22:19.903Z",
+    "update_ad": "2021-04-26T11:58:54.918Z",
+    "title": "вфывфыв",
+    "description": "вфывфы",
+    "category": 3,
+    "reminder": 317,
+    "price": "232.00"
+  }
+},
+{
+  "model": "webapp.basket",
+  "pk": 7,
+  "fields": {
+    "created_ad": "2021-04-26T11:58:53.303Z",
+    "update_ad": "2021-04-26T11:58:53.303Z",
+    "product": 7,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.basket",
+  "pk": 8,
+  "fields": {
+    "created_ad": "2021-04-26T11:58:54.181Z",
+    "update_ad": "2021-04-26T11:58:54.181Z",
+    "product": 8,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.basket",
+  "pk": 9,
+  "fields": {
+    "created_ad": "2021-04-26T11:58:54.911Z",
+    "update_ad": "2021-04-26T11:58:54.911Z",
+    "product": 9,
+    "total": 1
   }
 },
 {
@@ -70,20 +113,65 @@
 },
 {
   "model": "webapp.product_order",
-  "pk": 2,
-  "fields": {
-    "product": 6,
-    "order": 1,
-    "total": 2
-  }
-},
-{
-  "model": "webapp.product_order",
   "pk": 3,
   "fields": {
     "product": 7,
     "order": 1,
     "total": 6
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 4,
+  "fields": {
+    "product": 5,
+    "order": 2,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 5,
+  "fields": {
+    "product": 8,
+    "order": 3,
+    "total": 2
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 6,
+  "fields": {
+    "product": 9,
+    "order": 3,
+    "total": 3
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 7,
+  "fields": {
+    "product": 7,
+    "order": 3,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 8,
+  "fields": {
+    "product": 5,
+    "order": 3,
+    "total": 1
+  }
+},
+{
+  "model": "webapp.product_order",
+  "pk": 9,
+  "fields": {
+    "product": 9,
+    "order": 4,
+    "total": 2
   }
 },
 {
@@ -94,25 +182,44 @@
     "update_ad": "2021-04-05T12:28:49.481Z",
     "name": "задача",
     "number": "321",
-    "adress": "asdsad"
+    "adress": "asdsad",
+    "user": null
   }
 },
 {
-  "model": "auth.user",
-  "pk": 1,
+  "model": "webapp.order",
+  "pk": 2,
   "fields": {
-    "password": "pbkdf2_sha256$216000$DfohnbeSLbYk$YPKgd66ldeGdVXqZ1oolDbYuC6FtViabn8/OsqDxIC0=",
-    "last_login": "2021-04-05T10:25:29.988Z",
-    "is_superuser": true,
-    "username": "alishka1216",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2021-04-02T11:23:25.802Z",
-    "groups": [],
-    "user_permissions": []
+    "created_ad": "2021-04-26T11:03:33.079Z",
+    "update_ad": "2021-04-26T11:03:33.088Z",
+    "name": "ddsa",
+    "number": "dsad",
+    "adress": "dsad",
+    "user": 6
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 3,
+  "fields": {
+    "created_ad": "2021-04-26T11:22:43.192Z",
+    "update_ad": "2021-04-26T11:22:43.201Z",
+    "name": "ali",
+    "number": "ali",
+    "adress": "ali",
+    "user": 6
+  }
+},
+{
+  "model": "webapp.order",
+  "pk": 4,
+  "fields": {
+    "created_ad": "2021-04-26T11:29:26.231Z",
+    "update_ad": "2021-04-26T11:29:26.240Z",
+    "name": "еще",
+    "number": "еще",
+    "adress": "еще",
+    "user": 6
   }
 }
 ]

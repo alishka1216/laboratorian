@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h4> Cписок заказа</h4>
+     {% for order in orders %}
+         <div>--------------------------------
+      <p>Дата заказа: {{ order.order.created_ad }}</p>
+     <p>Номер заказа: {{ order.order.id }}</p>
+         <p style="color: seagreen">Название: {{ order.product.title }}</p>
+         <p>Цена: {{ order.product.price }}</p>
+         <p>колво: {{ order.total }}
+             <p>Общий тотал: {{ total }}</p>
+         </div>
+        {% endfor %}
+
+{% endblock %}
