@@ -13,7 +13,7 @@ from webapp.views import (
     BasketView,
     BasketDeleteBack,
     OrderCreateView,
-    OrderListView
+    OrderListView,
 )
 
 urlpatterns = [
@@ -28,5 +28,5 @@ urlpatterns = [
     path('product/basket/delete/<int:pk>/', BasketDeleteBack.as_view(), name='basket-delete'),
     path('order/', OrderCreateView.as_view(), name='order-add'),
     path('accounts/', include('accounts.urls')),
-    path('order/list/', OrderListView.as_view(), name='order-list')
+    path('order/list/', OrderListView.as_view(), name='order-list'),
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
