@@ -42,11 +42,11 @@ class Basket(BaseModel):
 
 class Product_order(models.Model):
     product = models.ForeignKey('webapp.Product', on_delete=models.CASCADE, related_name='product_order')
-    order = models.ForeignKey('webapp.Order', on_delete=models.CASCADE)
+    order = models.ForeignKey('webapp.Order', on_delete=models.CASCADE, related_name='order_products')
     total = models.IntegerField(validators=[MinValueValidator(0)], verbose_name='total')
 
     def __str__(self):
-        return self.total
+        return f'{self.total} '
 
 
 class Order(BaseModel):

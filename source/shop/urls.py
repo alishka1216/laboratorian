@@ -29,4 +29,5 @@ urlpatterns = [
     path('order/', OrderCreateView.as_view(), name='order-add'),
     path('accounts/', include('accounts.urls')),
     path('order/list/', OrderListView.as_view(), name='order-list'),
+    path('api/', include('api.urls'))
     ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
