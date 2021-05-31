@@ -44,6 +44,8 @@ class ProductUpdateView(PermissionRequiredMixin,UpdateView):
     def get_success_url(self):
         return reverse('product-view', kwargs={'pk': self.object.pk})
 
+    def has_permission(self):
+        return self.get_object().author == self.request.user or super().has_permission()
 
 class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'product_delete.html'
@@ -51,3 +53,6 @@ class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
     permission_required = 'webapp.delete_product'
+
+    def has_permission(self):
+        return self.get_object().author == self.request.user or super().has_permission()

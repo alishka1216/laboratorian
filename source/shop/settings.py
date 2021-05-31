@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'webapp',
     'accounts',
 
+    'rest_framework',
+    'rest_framework.authtoken',
+
 ]
 
 MIDDLEWARE = [
@@ -128,5 +131,11 @@ LOGOUT_REDIRECT_URL = 'accounts:login'
 
 LOGIN_URL = 'accounts:login'
 
-#для сессии
+
+# для разрешения api
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
